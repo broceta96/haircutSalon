@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Select Hair</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="container">
+			<h3>Select Haircut:</h3>
+			<form action=# th:action="@{saveHaircut}" method="POST" th:object="${haircut}">
+			
+				<input type="hidden" th:field="*{customer}"/>
+				
+				<select class="form-select" th:field="*{haircutName}">
+				  <option value="" disabled>Select Hairstyle:</option>
+				  <option th:each="data: ${haircuts}" th:text="${data.haircutName}" th:value="${data.haircutName}"></option>
+				</select>
+			    
+			  <button type="submit" class="btn btn-primary mt-3 mb-3">Save</button>
+			 
+			</form>
+			<a th:href="@{/}">Back to list</a>
+		</div>
+	</body>
+</html>

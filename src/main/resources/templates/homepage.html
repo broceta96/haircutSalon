@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>HomePage</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="container">
+			<h3>Customer List:</h3>
+			<a th:href="@{/addCustomer}" class="btn btn-primary mb-2">Add Customer</a>
+			<a th:href="@{/addEmployee}" class="btn btn-dark mb-2">Add Employee</a>
+			<a th:href="@{/listEmployee}" class="btn btn-info mb-2 ml-2">Employee List</a>
+			
+			<form th:action="@{/search}" class="col-3 mb-2">
+				<div class="input-group">
+				  <input type="search" class="form-control" name="customerName" placeholder="Search by name">
+				  <button class="btn btn-outline-success" type="submit">Search</button>
+				</div>
+		    </form>	
+		    
+			<table class="table table-striped table-hover table-bordered">
+				<tr class="table-dark">
+					<th>First name:</th>
+					<th>Last name:</th>
+					<th>Email</th>
+					<th>Select Hairstyle:</th>
+					<th>Actions:</th>
+				</tr>
+				<tr th:each="data: ${customers}">
+					<td th:text="${data.firstName}"></td>
+					<td th:text="${data.lastName}"></td>
+					<td th:text="${data.email}"></td>		
+					<td><a th:text="Select" th:href="@{/selectHaircut(hairId=${data.id})}" class="btn btn-success"></a></td>
+					<td>
+						<a th:text="Update" th:href="@{/updateCustomer(customerId=${data.id})}" class="btn btn-warning"></a>
+						<a th:text="Delete" th:href="@{/deleteCustomer(customerId=${data.id})}" class="btn btn-danger"
+						onclick="if(!(confirm('Are you sury you want to delete this customer?'))) return false"></a>
+						<a th:text="Information" th:href="@{/infoCustomer(customerId=${data.id})}" class="btn btn-secondary"></a>
+					</td>
+				</tr>
+			</table>
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Logout" class="btn btn-outline-primary">
+			</form>
+		</div>
+	</body>
+</html>

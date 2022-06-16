@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Customer Information</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="container">
+			<h3>Customer Information:</h3>
+			
+			<table border="1" class="table table-striped table-hover table-bordered mb-3">
+				<tr class="table-primary">
+					<th>Previous Haircuts:</th>
+				</tr>
+				<tr th:each="data: ${haircut}">
+					<td th:text="${data.haircutName}"></td>
+				</tr>
+				
+			</table>
+			<a th:href="@{/selectHaircut(hairId=${customer.id})}" class="btn btn-primary">New Hairstyle</a>
+			<a th:href="@{/}" class="d-block mt-3">Back to list</a>
+		</div>
+	</body>
+</html>
