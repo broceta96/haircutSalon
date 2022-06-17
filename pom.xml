@@ -11,7 +11,7 @@
 	<groupId>com.haircut</groupId>
 	<artifactId>haircut-salon</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>haircut-salon</name>
 	<description>Haircut salon project with spring boot</description>
 	<properties>
