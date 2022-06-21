@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.haircut.haircutsalon.entity.Customer;
-import com.haircut.haircutsalon.entity.Employee;
 import com.haircut.haircutsalon.entity.Haircut;
 import com.haircut.haircutsalon.service.CustomerService;
 import com.haircut.haircutsalon.service.HaircutService;
